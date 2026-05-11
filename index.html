@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Feliz cumpleaños 💕</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+  background: url("fondo.png") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+}
+
+/* capa oscura para que se vea pro */
+.overlay {
+  background: rgba(0,0,0,0.6);
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+/* título */
+h1 {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* tarjetas */
+.card {
+  background: rgba(255,255,255,0.95);
+  color: black;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+  animation: aparecer 0.6s ease;
+}
+
+@keyframes aparecer {
+  from {opacity:0; transform: translateY(20px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+/* botones */
+button {
+  padding: 12px 18px;
+  margin: 10px;
+  border: none;
+  border-radius: 12px;
+  background: #00b894;
+  color: white;
+  font-size: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #019875;
+  transform: scale(1.08);
+}
+
+.hidden { display: none; }
+
+#error {
+  color: #ff7675;
+}
+
+/* carta */
+.carta {
+  text-align: left;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+/* corazones finales */
+.heart {
+  position: fixed;
+  top: -10px;
+  font-size: 20px;
+  animation: caer linear forwards;
+}
+
+@keyframes caer {
+  to {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+</style>
+
+</head>
+<body>
+ margin: 0;
+  font-family: 'Press Start 2P', cursive;
+
+  background: url("./fondo.png") center center / cover no-repeat fixed;
+
+  color: white;
+<div class="overlay">
+
+<h1>🌿 FELIZ CUMPLEAÑOS MI AMORCITO 🌿</h1>
+
+<div id="nivel1" class="card">
+  <p>🎮 Nivel 1</p>
+  <p>¿Qué eres para mí?</p>
+  <button onclick="next(1)">Mi todo 💕</button>
+  <button onclick="error()">Un npc 🤨</button>
+</div>
+
+<div id="nivel2" class="card hidden">
+  <p>🍄 Nivel 2</p>
+  <p>¿Quién es mi persona favorita?</p>
+  <button onclick="next(2)">Tú 💖</button>
+  <button onclick="error()">Otro 😡</button>
+</div>
+
+<div id="nivel3" class="card hidden">
+  <p>🌸 Nivel 3</p>
+  <p>Presiona para desbloquear tu regalo</p>
+  <button onclick="final()">Abrir cofre 🎁</button>
+</div>
+
+<p id="msg"></p>
+
+<div id="final" class="card hidden">
+  <h2>🎉 FELIZ CUMPLEAÑOS MI AMORCITO 🎉</h2>
+
+  <div class="card carta">
+    <h3>Carta para John</h3>
+    <p>
+    Hoy es un día demasiado especial porque naciste tú, y sinceramente no puedo dejar pasar la oportunidad de decirte lo importante que eres para mí.  
+    FELIZ CUMPLEAÑOS MI AMORCITO ❤️  
+
+    Espero que este día lo disfrutes muchísimo, que te rías, que la pases increíble y que sientas todo lo especial que eres, no solo hoy, sino siempre.  
+    De verdad deseo que este nuevo año en tu vida venga lleno de cosas buenas, logros, momentos felices y sueños cumplidos.  
+
+    Quiero que sepas que para mí es una alegría enorme estar a tu lado. Me haces sentir bien, me haces reír y haces que todo sea más bonito.  
+    Gracias por cada momento, por cada conversación y por simplemente ser tú.  
+
+    Espero poder seguir estando a tu lado en este cumpleaños y en muchos más, acompañándote, apoyándote y creando recuerdos juntos.  
+    Porque si algo tengo claro, es que quiero seguir compartiendo mi tiempo contigo.  
+
+    Te quiero muchísimo ❤️
+    </p>
+  </div>
+
+</div>
+
+</div>
+
+<script>
+function next(n){
+  document.getElementById("nivel"+n).classList.add("hidden");
+  document.getElementById("nivel"+(n+1)).classList.remove("hidden");
+}
+
+function error(){
+  document.getElementById("msg").innerText = "❌ Esa no es la respuesta correcta";
+}
+
+function final(){
+  document.getElementById("nivel3").classList.add("hidden");
+  document.getElementById("final").classList.remove("hidden");
+  lluvia();
+}
+
+function lluvia(){
+  setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="💖";
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDuration=(Math.random()*2+3)+"s";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+  },200);
+}
+</script>
+
+</body>
+</html>
